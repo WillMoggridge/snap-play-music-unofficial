@@ -1,0 +1,41 @@
+name: google-play-music-desktop-player-wgm
+summary: Google Play Music™ Desktop Player (UNOFFICIAL)
+description: |
+  Run Google Play Music as a standalone desktop app. Never again will you have to hunt through your tabs to pause your music, or stop listening to your favourite song because Chrome is guzzling up all your RAM..
+
+  Developed by Samuel Attard.
+
+  No affiliation with Google. Google Play is a trademark of Google Inc.
+
+version: '0.1+git'
+grade: devel
+confinement: devmode
+
+apps:
+  google-play-music-desktop-player-wgm:
+    command: bin/google-play-music-desktop-player-wgm
+    plugs: [network]
+
+parts:
+  google-play-music-desktop-player-wgm:
+    plugin: nodejs
+    npm-run: ['build']
+    node-engine: '6.3.0'
+    source: 'tmp-src'
+    # source: git://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-
+    stage-packages:
+      - gcc-4.8-multilib
+      - g++
+      - g++-multilib
+      - g++-4.8-multilib
+      - libbz2-1.0
+      - lib32ncurses5
+      - lib32z1
+      - libavahi-compat-libdnssd-dev
+      - libc6-dev-i386
+      - libdbus-1-dev
+      - libdbus-1-dev:i386
+      - libexpat1-dev:i386
+      - libnotify4
+      - libx11-dev
+      - libx11-dev:i386
